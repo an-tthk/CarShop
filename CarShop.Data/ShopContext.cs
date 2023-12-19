@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CarShop.Core.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarShop.Data
 {
@@ -9,6 +10,6 @@ namespace CarShop.Data
 
         }
 
-        //public DbSet<Car> Cars { get; set; }
+        public DbSet<Car> Cars { get; set; }
     }
 }
