@@ -1,3 +1,5 @@
+using CarShop.ApplicationServices.Services;
+using CarShop.Core.ServiceInterface;
 using CarShop.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ICarServices, CarServices>();
 
 var app = builder.Build();
 
