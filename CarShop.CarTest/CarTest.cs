@@ -30,7 +30,7 @@ namespace CarShop.CarTest
             CarDto car = MockCarData();
 
             var addCar = await Svc<ICarServices>().Create(car);
-            var result = await Svc<ICarServices>().Delete(car.Id.GetValueOrDefault());
+            var result = await Svc<ICarServices>().Delete(addCar.Id.GetValueOrDefault());
 
             Assert.Equal(result, addCar);
         }
