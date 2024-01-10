@@ -25,6 +25,28 @@ namespace CarShop.CarTest
         }
 
         [Fact]
+        public async Task ShouldNot_GetByIdCar_WhenReturnsNotEqual()
+        {
+            Guid guid = Guid.Parse("0946d4c2-f3d6-47c7-9322-acf061949331");
+            Guid wrongGuid = Guid.NewGuid();
+
+            await Svc<ICarServices>().GetAsync(guid);
+
+            Assert.NotEqual(guid, wrongGuid);
+        }
+
+        [Fact]
+        public async Task Should_GetByIdCar_WhenReturnsEqual()
+        {
+            Guid databaseGuid = Guid.Parse("0946d4c2-f3d6-47c7-9322-acf061949331");
+            Guid getGuid = Guid.Parse("0946d4c2-f3d6-47c7-9322-acf061949331");
+
+            await Svc<ICarServices>().GetAsync(getGuid);
+
+            Assert.Equal(databaseGuid, getGuid);
+        }
+
+        [Fact]
         public async Task Should_DeleteByIdCar_WhenDeleteCar()
         {
             CarDto car = MockCarData();
